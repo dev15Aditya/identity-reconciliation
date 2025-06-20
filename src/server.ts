@@ -1,15 +1,15 @@
 import app from './app';
-// import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 import config from './config/config';
 
-// const prisma = new PrismaClient();
+const prisma = new PrismaClient();
 const port = config.port;
 
 app.listen(port, async () => {
   console.log(`Server running on port ${port}`);
   
   try {
-    // await prisma.$connect();
+    await prisma.$connect();
     console.log('Database connected successfully');
   } catch (error) {
     console.error('Database connection error:', error);
@@ -19,6 +19,6 @@ app.listen(port, async () => {
 
 // Handle shutdown
 process.on('SIGINT', async () => {
-//   await prisma.$disconnect();
+  await prisma.$disconnect();
   process.exit(0);
 });
