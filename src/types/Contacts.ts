@@ -1,19 +1,20 @@
-export interface Contact {
+export interface ContactRecord {
     id: number;
-    phoneNumber?: string;
-    email?: string;
-    linkedId?: number;
+    phoneNumber: string | null;
+    email: string | null;
+    linkedId: number | null;
     linkPrecedence: 'primary' | 'secondary';
     createdAt: Date;
     updatedAt: Date;
+    deletedAt: Date | null;
 }
 
-export interface IndentifyRequest {
+export interface ContactInput {
     email?: string;
     phoneNumber?: string;
 }
 
-export interface IndentifyResponse {
+export interface ContactResponse {
     contact: {
         primaryContactId: number;
         emails: string[];

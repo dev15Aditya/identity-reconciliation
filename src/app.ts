@@ -1,5 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import router from './routes/identify';
 
 const app = express();
 
@@ -7,6 +8,7 @@ const app = express();
 app.use(bodyParser.json());
 
 // Routes
+app.use('/identify', router)
 
 // Health check
 app.get('/', (req, res) => {
